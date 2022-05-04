@@ -1,0 +1,45 @@
+.logo {
+  &__title {
+    margin: 0;
+    margin-bottom: 10px;
+    color: $color-primary;
+    font-family: $ff-georgia;
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 110%;
+    letter-spacing: 0.06em;
+    transition: color $trans-default;
+  }
+
+  &__subtitle {
+    margin: 0;
+    padding-left: 4px;
+    color: $color-default-white;
+    font-family: $ff-arial;
+    font-size: 13px;
+    line-height: 15px;
+    letter-spacing: 0.1em;
+    transition: color $trans-default;
+  }
+}
+
+.header--light {
+  .logo {
+    @media (hover: hover), screen and (min-width: 0\0) {
+      &:hover,
+      &:focus {
+        .logo__title {
+          color: $color-dark-3xl;
+        }
+      }
+    }
+
+    &__title {
+      color: $color-dark-l;
+    }
+
+    &__subtitle {
+      color: $color-dark-3xl;
+    }
+  }
+}
