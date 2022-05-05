@@ -27,6 +27,7 @@ body {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2), inset 0 0 3px rgba(0, 0, 0, 0.3);
   transform: rotateX(15deg);
   box-sizing: initial;
+  user-select: none;
 
   * {
     box-sizing: initial;
@@ -36,6 +37,10 @@ body {
 .col {
   display: flex;
   flex-direction: column;
+
+  &--main {
+    min-width: 880px;
+  }
 }
 
 .row {
@@ -226,7 +231,7 @@ body {
 }
 
 // tab
-.k9 {
+.key--tab {
   width: 66px;
   border-right-width: 10px;
 }
@@ -238,7 +243,7 @@ body {
 }
 
 // control
-.k17 {
+.key--caps {
   width: 87px;
   border-right-width: 10px;
 }
@@ -250,7 +255,7 @@ body {
 }
 
 // left shift
-.k16.left {
+.key--shift {
   width: 113px;
   border-right-width: 10px;
 }

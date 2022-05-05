@@ -266,3 +266,37 @@ import '../sass/style.scss'
 // </div>
 // </div>`;
 
+const keys = document.querySelectorAll('.key');
+
+window.addEventListener('keydown', pressKey);
+
+window.addEventListener('mousedown', keydown);
+window.addEventListener('mouseup', keyup);
+
+window.addEventListener('keyup', removeTransition);
+
+function keydown(e) {
+  const key = e.target.closest('.key')
+  key ? key.classList.add('pressed', 'pressed--mouse') : '';
+}
+
+function keyup() {
+  const pressedKey = document.querySelector('.pressed--mouse');
+  pressedKey ? pressedKey.classList.remove('pressed', 'pressed--mouse') : '';
+}
+
+function pressKey(e) {
+  const key = document.querySelector(`.key[data-key="${e.keyCode}"]`);
+
+  key.classList.contains('prevent-default') ? e.preventDefault() : '';
+  key.classList.add('pressed');
+}
+
+function removeTransition(e) {
+  const key = document.querySelector(`.key[data-key="${e.keyCode}"]`);
+  key.classList.remove('pressed');
+}
+
+for (const key of keys) {
+  key.addEventListener('keyup', removeTransition);
+};
