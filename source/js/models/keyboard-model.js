@@ -42,6 +42,7 @@ class KeyboardModel extends Observable {
                 '192': `~<br />'`,
                 '219': `{<br />[`,
                 '221': `}<br />]`,
+                '220': `|<br />&#92;`,
             },
             ru: {
                 '81': 'й',
@@ -78,6 +79,7 @@ class KeyboardModel extends Observable {
                 '192': `ё`,
                 '219': `х`,
                 '221': `ъ`,
+                '220': `|<br />&#92;`,
             },
         }
     }

@@ -6,7 +6,10 @@ class KeyboardView extends Observer {
     this.controller = controller;
     this.controller.model.addObserver(this);
 
-    window.addEventListener('click', controller);
+    window.addEventListener('keydown', controller);
+    window.addEventListener('keyup', controller);
+    window.addEventListener('mousedown', controller);
+    window.addEventListener('mouseup', controller);
   }
 
   update(model) {
@@ -14,7 +17,7 @@ class KeyboardView extends Observer {
 
     for (const [key, value] of Object.entries(chars)) {
       const currentKey = document.querySelector(`.key[data-key="${key}"]`);
-      currentKey.querySelector('.keycap').innerHTML = value;
+      this.controller.modelRegister ? currentKey.querySelector('.keycap').innerHTML = value.toUpperCase() : currentKey.querySelector('.keycap').innerHTML = value;
     }
   }
 
@@ -160,7 +163,7 @@ class KeyboardView extends Observer {
                 <div class="keycap">${this.controller.model.chars[this.controller.modelLanguage]['219']}</div>
               </div>
               <div class="key" data-key="221">
-                <div class="keycap">${this.controller.model.chars[this.controller.modelLanguage]['211']}</div>
+                <div class="keycap">${this.controller.model.chars[this.controller.modelLanguage]['221']}</div>
               </div>
               <div class="key key--auto" data-key="220">
                 <div class="keycap">${this.controller.model.chars[this.controller.modelLanguage]['220']}</div>
@@ -241,7 +244,7 @@ class KeyboardView extends Observer {
               <div class="key" data-key="191">
                 <div class="keycap">${this.controller.model.chars[this.controller.modelLanguage]['191']}</div>
               </div>
-              <div class="right f_key key key--auto" data-key="16">
+              <div class="right f_key key key--auto right" data-key="16">
                 <div class="keycap">⇧ Shift</div>
               </div>
             </div>
@@ -265,13 +268,13 @@ class KeyboardView extends Observer {
               <div class="key key--spacebar key--auto" data-key="32">
                 <div class="keycap"></div>
               </div>
-              <div class="key key--mid left f_key" data-key="18">
+              <div class="key key--mid right f_key" data-key="18">
                 <div class="keycap">Alt</div>
               </div>
               <div class="key key--mid left f_key" data-key="93">
                 <div class="keycap">▤</div>
               </div>
-              <div class="key key--mid left f_key" data-key="17">
+              <div class="key key--mid right f_key" data-key="17">
                 <div class="keycap">Ctrl</div>
               </div>
             </div>

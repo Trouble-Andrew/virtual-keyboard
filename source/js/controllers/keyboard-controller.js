@@ -1,6 +1,8 @@
+import {insertAtCursor} from "../utils";
 class KeyboardController {
     constructor(model) {
         this.model = model;
+        this.pressed = [];
 
         const keys = document.querySelectorAll('.key');
 
@@ -14,9 +16,9 @@ class KeyboardController {
         // });
 
         // window.addEventListener('keydown', this.pressKey);
+        // window.addEventListener('keyup', this.removeTransition);
         // window.addEventListener('mousedown', this.keydown);
         // window.addEventListener('mouseup', this.keyup);
-        // window.addEventListener('keyup', this.removeTransition);
         // window.addEventListener('click', this.changeLanguage.bind(this));
     }
 
@@ -28,7 +30,18 @@ class KeyboardController {
                 this.clickHandler();
                 break;
             case "keydown":
-                console.log('DOWN');
+                this.pressKey(e);
+                this.changeLanguageDetector(e);
+                break;
+            case "keyup":
+                this.removeTransition(e);
+
+                break;
+            case "mousedown":
+                this.keydown(e);
+                break;
+            case "mouseup":
+                this.keyup(e);
                 break;
             default:
                 console.log(e.target);
@@ -39,11 +52,13 @@ class KeyboardController {
         return this.model.language;
     }
 
+    get modelRegister() {
+        return this.model.upperCase;
+    }
+
     //CHANGE THE MODEL
     clickHandler() {
         this.changeLanguage();
-        // this.model.notify(this.model);
-
     }
 
     changeLanguage() {
@@ -53,6 +68,31 @@ class KeyboardController {
             this.model.language = 'en';
         }
 
+        this.model.notify(this.model);
+    }
+
+    changeLanguageDetector(e) {
+        this.pressed.push(e.key);
+        const secretCode = 'cornify';
+        this.pressed.splice(-secretCode.length - 1, this.pressed.length - 2);
+
+        if (this.pressed.includes('Shift') && this.pressed.includes('Alt')) {
+            this.changeLanguage();
+        }
+    }
+
+    changeRegister() {
+        this.model.upperCase = !this.model.upperCase;
+        this.model.notify(this.model);
+    }
+
+    getUpperCase() {
+        this.model.upperCase = true;
+        this.model.notify(this.model);
+    }
+
+    getLowerCase() {
+        this.model.upperCase = false;
         this.model.notify(this.model);
     }
 
@@ -67,22 +107,67 @@ class KeyboardController {
     }
 
     pressKey(e) {
-        // console.log(e);
+        let key;
 
-        const key = document.querySelector(`.key[data-key="${e.keyCode}"]`);
+        if (e.location === 0) {
+            key = document.querySelector(`.key[data-key="${e.keyCode}"]`);
+        } else if (e.location === 1) {
+            key = document.querySelector(`.key[data-key="${e.keyCode}"].left`);
+        } else if (e.location === 2) {
+            key = document.querySelector(`.key[data-key="${e.keyCode}"].right`);
+        }
 
         key.classList.contains('prevent-default') ? e.preventDefault() : '';
         key.classList.add('pressed');
 
         // console.log(e.code.includes('Key') || e.code.includes('Digit'));
 
-        e.code.includes('Key') || e.code.includes('Digit') ? textarea.value += e.key : '';
-        // console.log(textarea.value);
+        textarea.focus();
+
+        // e.code.includes('Key') || e.code.includes('Digit') ? textarea.value += e.key : '';
+        // e.code.includes('Backquote') ? textarea.value += e.key : '';
+
+        console.log(e);
+        console.log(e.code);
+
+        if (e.key === 'CapsLock') {
+            this.changeRegister();
+        }
+
+        if (e.key === 'Shift') {
+            this.getUpperCase();
+        }
+
+        if (e.key === 'Tab') {
+            // textarea.value += '\t';
+            // textarea.setSelectionRange(2, 2);
+            // console.log(textarea.selectionStart);
+
+            let startPos = textarea.selectionStart;
+            // let endPos = textarea.selectionEnd;
+            // textarea.value = textarea.value.substring(0, startPos) + '\t' + textarea.value.substring(endPos, textarea.value.length);
+
+            insertAtCursor(textarea, '\t');
+        }
     }
 
     removeTransition(e) {
-        const key = document.querySelector(`.key[data-key="${e.keyCode}"]`);
+        // console.log(e);
+        let key;
+
+        if (e.location === 0) {
+            key = document.querySelector(`.key[data-key="${e.keyCode}"]`);
+        } else if (e.location === 1) {
+            key = document.querySelector(`.key[data-key="${e.keyCode}"].left`);
+        } else if (e.location === 2) {
+            key = document.querySelector(`.key[data-key="${e.keyCode}"].right`);
+        }
         key.classList.remove('pressed');
+        this.pressed = [];
+
+        if (e.key === 'Shift') {
+            this.getLowerCase();
+        }
     }
 
 
