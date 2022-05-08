@@ -18,6 +18,9 @@ class KeyboardView extends Observer {
     // eslint-disable-next-line no-restricted-syntax
     for (const [key, value] of Object.entries(chars)) {
       const currentKey = document.querySelector(`.key[data-key="${key}"]`);
+      console.log(key);
+      // console.log(value);
+      console.log(currentKey);
       if (this.controller.modelRegister) {
         currentKey.querySelector('.keycap').innerHTML = value.toUpperCase();
       } else {
@@ -27,7 +30,8 @@ class KeyboardView extends Observer {
   }
 
   render() {
-    const container = document.querySelector('#app');
+    // const container = document.querySelector('#app');
+    const container = document.querySelector('body');
     const template = `<form action="#" id="form">
         <label for="textarea"></label>
         <textarea id="textarea" name="textarea" rows="4" cols="50"></textarea>
@@ -38,48 +42,48 @@ class KeyboardView extends Observer {
         <div class="col col--main">
           <div class="function background">
             <div class="row">
-              <div class="f_key key" data-key="27">
+              <div class="f_key key" data-key="Escape">
                 <div class="keycap">Esc</div>
               </div>
               <div class="function__group">
-                <div class="key prevent-default" data-key="112">
+                <div class="key prevent-default" data-key="F1">
                   <div class="keycap">F1</div>
                 </div>
-                <div class="key prevent-default" data-key="113">
+                <div class="key prevent-default" data-key="F2">
                   <div class="keycap">F2</div>
                 </div>
-                <div class="key prevent-default" data-key="114">
+                <div class="key prevent-default" data-key="F3">
                   <div class="keycap">F3</div>
                 </div>
-                <div class="key prevent-default" data-key="115">
+                <div class="key prevent-default" data-key="F4">
                   <div class="keycap">F4</div>
                 </div>
               </div>
               <div class="function__group">
-                <div class="key prevent-default" data-key="116">
+                <div class="key prevent-default" data-key="F5">
                   <div class="keycap">F5</div>
                 </div>
-                <div class="key prevent-default" data-key="117">
+                <div class="key prevent-default" data-key="F6">
                   <div class="keycap">F6</div>
                 </div>
-                <div class="key prevent-default" data-key="118">
+                <div class="key prevent-default" data-key="F7">
                   <div class="keycap">F7</div>
                 </div>
-                <div class="key prevent-default" data-key="119">
+                <div class="key prevent-default" data-key="F8">
                   <div class="keycap">F8</div>
                 </div>
               </div>
               <div class="function__group">
-                <div class="key prevent-default" data-key="120">
+                <div class="key prevent-default" data-key="F9">
                   <div class="keycap">F9</div>
                 </div>
-                <div class="key prevent-default" data-key="121">
+                <div class="key prevent-default" data-key="F10">
                   <div class="keycap">F10</div>
                 </div>
-                <div class="key prevent-default" data-key="122">
+                <div class="key prevent-default" data-key="F11">
                   <div class="keycap">F11</div>
                 </div>
-                <div class="key prevent-default" data-key="123">
+                <div class="key prevent-default" data-key="F12">
                   <div class="keycap">F12</div>
                 </div>
               </div>
@@ -87,177 +91,177 @@ class KeyboardView extends Observer {
           </div>
           <div class="main background">
             <div class="row">
-              <div class="key" data-key="192">
+              <div class="key" data-key="Backquote">
                 <div class="keycap">~<br />'</div>
               </div>
-              <div class="key" data-key="49">
+              <div class="key" data-key="Digit1">
                 <div class="keycap">!<br />1</div>
               </div>
-              <div class="key" data-key="50">
+              <div class="key" data-key="Digit2">
                 <div class="keycap">@<br />2</div>
               </div>
-              <div class="key" data-key="51">
+              <div class="key" data-key="Digit3">
                 <div class="keycap">#<br />3</div>
               </div>
-              <div class="key" data-key="52">
+              <div class="key" data-key="Digit4">
                 <div class="keycap">$<br />4</div>
               </div>
-              <div class="key" data-key="53">
+              <div class="key" data-key="Digit5">
                 <div class="keycap">%<br />5</div>
               </div>
-              <div class="key" data-key="54">
+              <div class="key" data-key="Digit6">
                 <div class="keycap">^<br />6</div>
               </div>
-              <div class="key" data-key="55">
+              <div class="key" data-key="Digit7">
                 <div class="keycap">&<br />7</div>
               </div>
-              <div class="key" data-key="56">
+              <div class="key" data-key="Digit8">
                 <div class="keycap">*<br />8</div>
               </div>
-              <div class="key" data-key="57">
+              <div class="key" data-key="Digit9">
                 <div class="keycap">(<br />9</div>
               </div>
-              <div class="key" data-key="48">
+              <div class="key" data-key="Digit0">
                 <div class="keycap">)<br />0</div>
               </div>
-              <div class="key" data-key="109">
+              <div class="key" data-key="Minus">
                 <div class="keycap">_<br />-</div>
               </div>
-              <div class="key" data-key="187">
+              <div class="key" data-key="Equ  al">
                 <div class="keycap">+<br />=</div>
               </div>
-              <div class="f_key key key--auto key--backspace" data-key="8">
+              <div class="f_key key key--auto key--backspace" data-key="Backspace">
                 <div class="keycap">⇤ Backspace</div>
               </div>
             </div>
             <div class="row">
-              <div class="f_key key key--auto key--tab prevent-default" data-key="9">
+              <div class="f_key key key--auto key--tab prevent-default" data-key="Tab">
                 <div class="keycap">Tab ↹</div>
               </div>
-              <div class="key" data-key="81">
-                <div class="keycap">${this.controller.model.chars[this.controller.modelLanguage]['81']}</div>
+              <div class="key" data-key="KeyQ">
+                <div class="keycap">${this.controller.model.chars[this.controller.modelLanguage].KeyQ}</div>
               </div>
-              <div class="key" data-key="87">
-                <div class="keycap">${this.controller.model.chars[this.controller.modelLanguage]['87']}</div>
+              <div class="key" data-key="KeyW">
+                <div class="keycap">${this.controller.model.chars[this.controller.modelLanguage].KeyW}</div>
               </div>
-              <div class="key" data-key="69">
-                <div class="keycap">${this.controller.model.chars[this.controller.modelLanguage]['69']}</div>
+              <div class="key" data-key="KeyE">
+                <div class="keycap">${this.controller.model.chars[this.controller.modelLanguage].KeyE}</div>
               </div>
-              <div class="key" data-key="82">
-                <div class="keycap">${this.controller.model.chars[this.controller.modelLanguage]['82']}</div>
+              <div class="key" data-key="KeyR">
+                <div class="keycap">${this.controller.model.chars[this.controller.modelLanguage].KeyR}</div>
               </div>
-              <div class="key" data-key="84">
-                <div class="keycap">${this.controller.model.chars[this.controller.modelLanguage]['84']}</div>
+              <div class="key" data-key="KeyT">
+                <div class="keycap">${this.controller.model.chars[this.controller.modelLanguage].KeyT}</div>
               </div>
-              <div class="key" data-key="89">
-                <div class="keycap">${this.controller.model.chars[this.controller.modelLanguage]['89']}</div>
+              <div class="key" data-key="KeyY">
+                <div class="keycap">${this.controller.model.chars[this.controller.modelLanguage].KeyY}</div>
               </div>
-              <div class="key" data-key="85">
-                <div class="keycap">${this.controller.model.chars[this.controller.modelLanguage]['85']}</div>
+              <div class="key" data-key="KeyU">
+                <div class="keycap">${this.controller.model.chars[this.controller.modelLanguage].KeyU}</div>
               </div>
-              <div class="key" data-key="73">
-                <div class="keycap">${this.controller.model.chars[this.controller.modelLanguage]['73']}</div>
+              <div class="key" data-key="KeyI">
+                <div class="keycap">${this.controller.model.chars[this.controller.modelLanguage].KeyI}</div>
               </div>
-              <div class="key" data-key="79">
-                <div class="keycap">${this.controller.model.chars[this.controller.modelLanguage]['79']}</div>
+              <div class="key" data-key="KeyO">
+                <div class="keycap">${this.controller.model.chars[this.controller.modelLanguage].KeyO}</div>
               </div>
-              <div class="key" data-key="80">
-                <div class="keycap">${this.controller.model.chars[this.controller.modelLanguage]['80']}</div>
+              <div class="key" data-key="KeyP">
+                <div class="keycap">${this.controller.model.chars[this.controller.modelLanguage].KeyP}</div>
               </div>
-              <div class="key" data-key="219" data-alt-key="160">
-                <div class="keycap">${this.controller.model.chars[this.controller.modelLanguage]['219']}</div>
+              <div class="key" data-key="BracketLeft">
+                <div class="keycap">${this.controller.model.chars[this.controller.modelLanguage].BracketLeft}</div>
               </div>
-              <div class="key" data-key="221">
-                <div class="keycap">${this.controller.model.chars[this.controller.modelLanguage]['221']}</div>
+              <div class="key" data-key="BracketRight">
+                <div class="keycap">${this.controller.model.chars[this.controller.modelLanguage].BracketRight}</div>
               </div>
-              <div class="key key--auto" data-key="220">
-                <div class="keycap">${this.controller.model.chars[this.controller.modelLanguage]['220']}</div>
+              <div class="key key--auto" data-key="Backslash">
+                <div class="keycap">${this.controller.model.chars[this.controller.modelLanguage].Backslash}</div>
               </div>
             </div>
             <div class="row">
-              <div class="f_key key key--caps" data-key="20" data-alt-key="70">
+              <div class="f_key key key--caps" data-key="CapsLock">
                 <div class="keycap">CapsLock</div>
               </div>
-              <div class="k65 key" data-key="65">
-                <div class="keycap">${this.controller.model.chars[this.controller.modelLanguage]['65']}</div>
+              <div class="key" data-key="KeyA">
+                <div class="keycap">${this.controller.model.chars[this.controller.modelLanguage].KeyA}</div>
               </div>
-              <div class="key" data-key="83">
-                <div class="keycap">${this.controller.model.chars[this.controller.modelLanguage]['83']}</div>
+              <div class="key" data-key="KeyS">
+                <div class="keycap">${this.controller.model.chars[this.controller.modelLanguage].KeyS}</div>
               </div>
-              <div class="key" data-key="68">
-                <div class="keycap">${this.controller.model.chars[this.controller.modelLanguage]['68']}</div>
+              <div class="key" data-key="KeyD">
+                <div class="keycap">${this.controller.model.chars[this.controller.modelLanguage].KeyD}</div>
               </div>
-              <div class="key" data-key="70">
-                <div class="keycap">${this.controller.model.chars[this.controller.modelLanguage]['70']}</div>
+              <div class="key" data-key="KeyF">
+                <div class="keycap">${this.controller.model.chars[this.controller.modelLanguage].KeyF}</div>
               </div>
-              <div class="key" data-key="71">
-                <div class="keycap">${this.controller.model.chars[this.controller.modelLanguage]['71']}</div>
+              <div class="key" data-key="KeyG">
+                <div class="keycap">${this.controller.model.chars[this.controller.modelLanguage].KeyG}</div>
               </div>
-              <div class="key" data-key="72">
-                <div class="keycap">${this.controller.model.chars[this.controller.modelLanguage]['72']}</div>
+              <div class="key" data-key="KeyH">
+                <div class="keycap">${this.controller.model.chars[this.controller.modelLanguage].KeyH}</div>
               </div>
-              <div class="key" data-key="74">
-                <div class="keycap">${this.controller.model.chars[this.controller.modelLanguage]['74']}</div>
+              <div class="key" data-key="KeyJ">
+                <div class="keycap">${this.controller.model.chars[this.controller.modelLanguage].KeyJ}</div>
               </div>
-              <div class="key" data-key="75">
-                <div class="keycap">${this.controller.model.chars[this.controller.modelLanguage]['75']}</div>
+              <div class="key" data-key="KeyK">
+                <div class="keycap">${this.controller.model.chars[this.controller.modelLanguage].KeyK}</div>
               </div>
-              <div class="key" data-key="76">
-                <div class="keycap">${this.controller.model.chars[this.controller.modelLanguage]['76']}</div>
+              <div class="key" data-key="KeyL">
+                <div class="keycap">${this.controller.model.chars[this.controller.modelLanguage].KeyL}</div>
               </div>
-              <div class="key" data-key="186">
-                <div class="keycap">${this.controller.model.chars[this.controller.modelLanguage]['186']}</div>
+              <div class="key" data-key="Semicolon">
+                <div class="keycap">${this.controller.model.chars[this.controller.modelLanguage].Semicolon}</div>
               </div>
-              <div class="key" data-key="222">
-                <div class="keycap">${this.controller.model.chars[this.controller.modelLanguage]['222']}</div>
+              <div class="key" data-key="Quote">
+                <div class="keycap">${this.controller.model.chars[this.controller.modelLanguage].Quote}</div>
               </div>
-              <div class="f_key key key--auto" data-key="13">
+              <div class="f_key key key--auto" data-key="Enter">
                 <div class="keycap">Enter<br />↲</div>
               </div>
             </div>
             <div class="row">
-              <div class="left f_key key key--shift" data-key="16">
+              <div class="left f_key key key--shift" data-key="ShiftLeft">
                 <div class="keycap">⇧ Shift</div>
               </div>
-              <div class="key" data-key="90">
-                <div class="keycap">${this.controller.model.chars[this.controller.modelLanguage]['90']}</div>
+              <div class="key" data-key="KeyZ">
+                <div class="keycap">${this.controller.model.chars[this.controller.modelLanguage].KeyZ}</div>
               </div>
-              <div class="key" data-key="88">
-                <div class="keycap">${this.controller.model.chars[this.controller.modelLanguage]['88']}</div>
+              <div class="key" data-key="KeyX">
+                <div class="keycap">${this.controller.model.chars[this.controller.modelLanguage].KeyX}</div>
               </div>
-              <div class="key" data-key="67">
-                <div class="keycap">${this.controller.model.chars[this.controller.modelLanguage]['67']}</div>
+              <div class="key" data-key="KeyC">
+                <div class="keycap">${this.controller.model.chars[this.controller.modelLanguage].KeyC}</div>
               </div>
-              <div class="key" data-key="86">
-                <div class="keycap">${this.controller.model.chars[this.controller.modelLanguage]['86']}</div>
+              <div class="key" data-key="KeyV">
+                <div class="keycap">${this.controller.model.chars[this.controller.modelLanguage].KeyV}</div>
               </div>
-              <div class="key" data-key="66">
-                <div class="keycap">${this.controller.model.chars[this.controller.modelLanguage]['66']}</div>
+              <div class="key" data-key="KeyB">
+                <div class="keycap">${this.controller.model.chars[this.controller.modelLanguage].KeyB}</div>
               </div>
-              <div class="key" data-key="78">
-                <div class="keycap">${this.controller.model.chars[this.controller.modelLanguage]['78']}</div>
+              <div class="key" data-key="KeyN">
+                <div class="keycap">${this.controller.model.chars[this.controller.modelLanguage].KeyN}</div>
               </div>
-              <div class="key" data-key="77">
-                <div class="keycap">${this.controller.model.chars[this.controller.modelLanguage]['77']}</div>
+              <div class="key" data-key="KeyM">
+                <div class="keycap">${this.controller.model.chars[this.controller.modelLanguage].KeyM}</div>
               </div>
-              <div class="key" data-key="108">
-                <div class="keycap">${this.controller.model.chars[this.controller.modelLanguage]['108']}</div>
+              <div class="key" data-key="Comma">
+                <div class="keycap">${this.controller.model.chars[this.controller.modelLanguage].Comma}</div>
               </div>
-              <div class="key" data-key="190">
-                <div class="keycap">${this.controller.model.chars[this.controller.modelLanguage]['190']}</div>
+              <div class="key" data-key="Period">
+                <div class="keycap">${this.controller.model.chars[this.controller.modelLanguage].Period}</div>
               </div>
-              <div class="key" data-key="191">
-                <div class="keycap">${this.controller.model.chars[this.controller.modelLanguage]['191']}</div>
+              <div class="key" data-key="Slash">
+                <div class="keycap">${this.controller.model.chars[this.controller.modelLanguage].Slash}</div>
               </div>
-              <div class="right f_key key key--auto right" data-key="16">
+              <div class="right f_key key key--auto right" data-key="ShiftRight">
                 <div class="keycap">⇧ Shift</div>
               </div>
             </div>
             <div class="row">
-              <div class="key key--mid left f_key" data-key="17">
+              <div class="key key--mid left f_key" data-key="ControlLeft">
                 <div class="keycap">Ctrl</div>
               </div>
-              <div class="key key--mid left f_key" data-key="91">
+              <div class="key key--mid left f_key" data-key="MetaLeft">
                 <div class=" keycap">
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 455.251 455.251"
                     style="enable-background:new 0 0 455.251 455.251" xml:space="preserve">
@@ -267,19 +271,19 @@ class KeyboardView extends Observer {
                   </svg>
                 </div>
               </div>
-              <div class="key key--mid left f_key" data-key="18">
+              <div class="key key--mid left f_key" data-key="AltLeft">
                 <div class="keycap">Alt</div>
               </div>
-              <div class="key key--spacebar key--auto" data-key="32">
+              <div class="key key--spacebar key--auto" data-key="Space">
                 <div class="keycap"></div>
               </div>
-              <div class="key key--mid right f_key" data-key="18">
+              <div class="key key--mid right f_key" data-key="AltRight">
                 <div class="keycap">Alt</div>
               </div>
-              <div class="key key--mid left f_key" data-key="93">
+              <div class="key key--mid left f_key" data-key="ContextMenu">
                 <div class="keycap">▤</div>
               </div>
-              <div class="key key--mid right f_key" data-key="17">
+              <div class="key key--mid right f_key" data-key="ControlRight">
                 <div class="keycap">Ctrl</div>
               </div>
             </div>
@@ -303,42 +307,42 @@ class KeyboardView extends Observer {
           </div>
           <div class="background">
             <div class="row">
-              <div class="key" data-key="45">
+              <div class="key" data-key="Insert">
                 <div class="keycap">Ins</div>
               </div>
-              <div class="key" data-key="36">
+              <div class="key" data-key="Home">
                 <div class="keycap">Home</div>
               </div>
-              <div class="key" data-key="33">
+              <div class="key" data-key="PageUp">
                 <div class="keycap">PgUp</div>
               </div>
             </div>
             <div class="row">
-              <div class="key" data-key="46">
+              <div class="key" data-key="Delete">
                 <div class="keycap">Del</div>
               </div>
-              <div class="key" data-key="35">
+              <div class="key" data-key="End">
                 <div class="keycap">End</div>
               </div>
-              <div class="key" data-key="34">
+              <div class="key" data-key="PageDown">
                 <div class="keycap">PgDn</div>
               </div>
             </div>
           </div>
           <div class="arrows background">
             <div class="row">
-              <div class="key" data-key="38">
+              <div class="key" data-key="ArrowUp">
                 <div class="keycap">🠕</div>
               </div>
             </div>
             <div class="row">
-              <div class="key" data-key="37">
+              <div class="key" data-key="ArrowLeft">
                 <div class="keycap">🠔</div>
               </div>
-              <div class="key" data-key="40">
+              <div class="key" data-key="ArrowDown">
                 <div class="keycap">🠗</div>
               </div>
-              <div class="key" data-key="39">
+              <div class="key" data-key="ArrowRight">
                 <div class="keycap">🠖</div>
               </div>
             </div>
@@ -346,7 +350,11 @@ class KeyboardView extends Observer {
         </div>
       </div>`;
 
-    container.innerHTML = template;
+    const newElement = document.createElement('div');
+    newElement.id = 'app';
+    newElement.innerHTML = template;
+    // container.innerHTML = template;
+    container.insertAdjacentElement('afterbegin', newElement);
   }
 }
 

@@ -9,7 +9,7 @@ class KeyboardController {
 
     // window.addEventListener('keydown', (e) => {
     //     console.log(e);
-    //     console.log(this.model.chars[this.model.language][e.keyCode]);
+    //     console.log(this.model.chars[this.model.language][e.code]);
     // });
 
     // window.addEventListener('keydown', this.pressKey);
@@ -35,10 +35,10 @@ class KeyboardController {
 
         break;
       case 'mousedown':
-        KeyboardController.keydown(e);
+        this.keydown(e);
         break;
       case 'mouseup':
-        KeyboardController.keyup(e);
+        this.keyup(e);
         break;
       default:
         console.log(e.target);
@@ -93,34 +93,47 @@ class KeyboardController {
     this.model.notify(this.model);
   }
 
-  static keydown(e) {
+  keydown(e) {
     const key = e.target.closest('.key');
+    const textarea = document.querySelector('#textarea');
+
     if (key) {
       key.classList.add('pressed', 'pressed--mouse');
     }
+
+    if (key) {
+      let char;
+      console.log(this.modelRegister);
+      console.log(key.dataset.key);
+
+      if (this.modelRegister) {
+        console.log(String.fromCharCode(key.dataset.key).toUpperCase());
+        char = String.fromCharCode(key.dataset.key).toUpperCase();
+      } else {
+        console.log(String.fromCharCode(key.dataset.key).toLowerCase());
+        char = String.fromCharCode(key.dataset.key).toLowerCase();
+      }
+
+      insertAtCursor(textarea, char);
+    }
   }
 
-  static keyup() {
+  keyup() {
     const pressedKey = document.querySelector('.pressed--mouse');
     if (pressedKey) {
       pressedKey.classList.remove('pressed', 'pressed--mouse');
     }
+
+    console.log(this.modelRegister);
   }
 
   pressKey(e) {
-    let key;
-
-    if (e.location === 0) {
-      key = document.querySelector(`.key[data-key="${e.keyCode}"]`);
-    } else if (e.location === 1) {
-      key = document.querySelector(`.key[data-key="${e.keyCode}"].left`);
-    } else if (e.location === 2) {
-      key = document.querySelector(`.key[data-key="${e.keyCode}"].right`);
-    }
+    const key = document.querySelector(`.key[data-key="${e.code}"]`);
 
     if (key.classList.contains('prevent-default')) {
       e.preventDefault();
     }
+
     key.classList.add('pressed');
 
     // console.log(e.code.includes('Key') || e.code.includes('Digit'));
@@ -131,8 +144,8 @@ class KeyboardController {
     // e.code.includes('Key') || e.code.includes('Digit') ? textarea.value += e.key : '';
     // e.code.includes('Backquote') ? textarea.value += e.key : '';
 
-    console.log(e);
-    console.log(e.code);
+    // console.log(e);
+    // console.log(e.code);
 
     if (e.key === 'CapsLock') {
       this.changeRegister();
@@ -158,15 +171,16 @@ class KeyboardController {
 
   removeTransition(e) {
     // console.log(e);
-    let key;
 
-    if (e.location === 0) {
-      key = document.querySelector(`.key[data-key="${e.keyCode}"]`);
-    } else if (e.location === 1) {
-      key = document.querySelector(`.key[data-key="${e.keyCode}"].left`);
-    } else if (e.location === 2) {
-      key = document.querySelector(`.key[data-key="${e.keyCode}"].right`);
-    }
+    // if (e.location === 0) {
+    //   key = document.querySelector(`.key[data-key="${e.code}"]`);
+    // } else if (e.location === 1) {
+    //   key = document.querySelector(`.key[data-key="${e.code}"].left`);
+    // } else if (e.location === 2) {
+    //   key = document.querySelector(`.key[data-key="${e.code}"].right`);
+    // }
+
+    const key = document.querySelector(`.key[data-key="${e.code}"]`);
     key.classList.remove('pressed');
     this.pressed = [];
 
