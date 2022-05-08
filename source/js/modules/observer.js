@@ -1,5 +1,5 @@
 class Observer {
-    update() { }
+  static update() { }
 }
 
 export default Observer;

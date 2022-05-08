@@ -1,20 +1,18 @@
 function insertAtCursor(myField, myValue) {
-
-    if (document.selection) {
-        myField.focus();
-        sel = document.selection.createRange();
-        sel.text = myValue;
-    }
-
-    else if (myField.selectionStart || myField.selectionStart == '0') {
-        var startPos = myField.selectionStart;
-        var endPos = myField.selectionEnd;
-        myField.value = myField.value.substring(0, startPos)
+  const field = myField;
+  if (document.selection) {
+    field.focus();
+    const sel = document.selection.createRange();
+    sel.text = myValue;
+  } else if (field.selectionStart || field.selectionStart === '0') {
+    const startPos = field.selectionStart;
+    const endPos = field.selectionEnd;
+    field.value = field.value.substring(0, startPos)
             + myValue
-            + myField.value.substring(endPos, myField.value.length);
-    } else {
-        myField.value += myValue;
-    }
+            + field.value.substring(endPos, field.value.length);
+  } else {
+    field.value += myValue;
+  }
 }
 
-export {insertAtCursor};
+export default insertAtCursor;

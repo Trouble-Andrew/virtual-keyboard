@@ -1,4 +1,4 @@
-import Observer from "../modules/observer.js";
+import Observer from '../modules/observer';
 
 class KeyboardView extends Observer {
   constructor(controller) {
@@ -13,11 +13,16 @@ class KeyboardView extends Observer {
   }
 
   update(model) {
-    const chars = model.chars[this.controller.modelLanguage]
+    const chars = model.chars[this.controller.modelLanguage];
 
+    // eslint-disable-next-line no-restricted-syntax
     for (const [key, value] of Object.entries(chars)) {
       const currentKey = document.querySelector(`.key[data-key="${key}"]`);
-      this.controller.modelRegister ? currentKey.querySelector('.keycap').innerHTML = value.toUpperCase() : currentKey.querySelector('.keycap').innerHTML = value;
+      if (this.controller.modelRegister) {
+        currentKey.querySelector('.keycap').innerHTML = value.toUpperCase();
+      } else {
+        currentKey.querySelector('.keycap').innerHTML = value;
+      }
     }
   }
 

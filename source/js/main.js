@@ -1,7 +1,7 @@
 import '../sass/style.scss';
-import KeyboardController from './controllers/keyboard-controller.js';
-import KeyboardModel from './models/keyboard-model.js';
-import KeyboardView from './views/keyboard-view.js';
+import KeyboardController from './controllers/keyboard-controller';
+import KeyboardModel from './models/keyboard-model';
+import KeyboardView from './views/keyboard-view';
 
 // const keys = document.querySelectorAll('.key');
 // const textarea = document.querySelector('#textarea');
@@ -44,7 +44,6 @@ import KeyboardView from './views/keyboard-view.js';
 // for (const key of keys) {
 //   key.addEventListener('keyup', removeTransition);
 // };
-
 
 const model = new KeyboardModel();
 const controller = new KeyboardController(model);
