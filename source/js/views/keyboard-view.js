@@ -127,7 +127,7 @@ class KeyboardView extends Observer {
               <div class="key" data-key="Minus">
                 <div class="keycap">_<br />-</div>
               </div>
-              <div class="key" data-key="Equ  al">
+              <div class="key" data-key="Equal">
                 <div class="keycap">+<br />=</div>
               </div>
               <div class="f_key key key--auto key--backspace" data-key="Backspace">

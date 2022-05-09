@@ -4,19 +4,6 @@ class KeyboardController {
   constructor(model) {
     this.model = model;
     this.pressed = [];
-
-    // const keys = document.querySelectorAll('.key');
-
-    // window.addEventListener('keydown', (e) => {
-    //     console.log(e);
-    //     console.log(this.model.chars[this.model.language][e.code]);
-    // });
-
-    // window.addEventListener('keydown', this.pressKey);
-    // window.addEventListener('keyup', this.removeTransition);
-    // window.addEventListener('mousedown', KeyboardController.keydown);
-    // window.addEventListener('mouseup', KeyboardController.keyup);
-    // window.addEventListener('click', this.changeLanguage.bind(this));
   }
 
   // EVENTLISTENER INTERFACE
@@ -38,7 +25,7 @@ class KeyboardController {
         this.keydown(e);
         break;
       case 'mouseup':
-        this.keyup(e);
+        KeyboardController.keyup(e);
         break;
       default:
         console.log(e.target);
@@ -103,28 +90,128 @@ class KeyboardController {
 
     if (key) {
       let char;
-      console.log(this.modelRegister);
+      // console.log(this.modelRegister);
       console.log(key.dataset.key);
+      console.log(this.model.chars[this.model.language][key.dataset.key]);
 
-      if (this.modelRegister) {
-        console.log(String.fromCharCode(key.dataset.key).toUpperCase());
-        char = String.fromCharCode(key.dataset.key).toUpperCase();
-      } else {
-        console.log(String.fromCharCode(key.dataset.key).toLowerCase());
-        char = String.fromCharCode(key.dataset.key).toLowerCase();
+      if (key.dataset.key.includes('Key')) {
+        if (this.modelRegister) {
+          char = this.model.chars[this.model.language][key.dataset.key].toUpperCase();
+        } else {
+          char = this.model.chars[this.model.language][key.dataset.key].toLowerCase();
+        }
       }
 
-      insertAtCursor(textarea, char);
+      if (key.dataset.key.includes('Digit')) {
+        char = key.dataset.key.replace('Digit', '');
+      }
+
+      if (char) {
+        textarea.focus();
+        insertAtCursor(textarea, char);
+      }
+
+      switch (key.dataset.key) {
+        case 'Tab':
+          insertAtCursor(textarea, '\t');
+          break;
+        case 'CapsLock':
+          this.changeRegister();
+          break;
+        case 'Backquote':
+          if (this.model.language === 'en') {
+            insertAtCursor(textarea, '`');
+          } else {
+            insertAtCursor(textarea, 'ё');
+          }
+          break;
+        case 'Minus':
+          insertAtCursor(textarea, '-');
+          break;
+        case 'Equal':
+          insertAtCursor(textarea, '=');
+          break;
+        case 'Enter':
+          insertAtCursor(textarea, '\r');
+          break;
+        case 'Space':
+          insertAtCursor(textarea, ' ');
+          break;
+        case 'Backslash':
+          insertAtCursor(textarea, '\\');
+          break;
+        case 'ArrowUp':
+          insertAtCursor(textarea, '🠕');
+          break;
+        case 'ArrowDown':
+          insertAtCursor(textarea, '🠗');
+          break;
+        case 'ArrowLeft':
+          insertAtCursor(textarea, '🠔');
+          break;
+        case 'ArrowRight':
+          insertAtCursor(textarea, '🠖');
+          break;
+        case 'BracketLeft':
+          if (this.model.language === 'en') {
+            insertAtCursor(textarea, '[');
+          } else {
+            insertAtCursor(textarea, 'х');
+          }
+          break;
+        case 'BracketRight':
+          if (this.model.language === 'en') {
+            insertAtCursor(textarea, ']');
+          } else {
+            insertAtCursor(textarea, 'ъ');
+          }
+          break;
+        case 'Semicolon':
+          if (this.model.language === 'en') {
+            insertAtCursor(textarea, ';');
+          } else {
+            insertAtCursor(textarea, 'ж');
+          }
+          break;
+        case 'Quote':
+          if (this.model.language === 'en') {
+            insertAtCursor(textarea, '\'');
+          } else {
+            insertAtCursor(textarea, 'э');
+          }
+          break;
+        case 'Comma':
+          if (this.model.language === 'en') {
+            insertAtCursor(textarea, ',');
+          } else {
+            insertAtCursor(textarea, 'б');
+          }
+          break;
+        case 'Period':
+          if (this.model.language === 'en') {
+            insertAtCursor(textarea, '.');
+          } else {
+            insertAtCursor(textarea, 'ю');
+          }
+          break;
+        case 'Slash':
+          if (this.model.language === 'en') {
+            insertAtCursor(textarea, '/');
+          } else {
+            insertAtCursor(textarea, '.');
+          }
+          break;
+        default:
+          break;
+      }
     }
   }
 
-  keyup() {
+  static keyup() {
     const pressedKey = document.querySelector('.pressed--mouse');
     if (pressedKey) {
       pressedKey.classList.remove('pressed', 'pressed--mouse');
     }
-
-    console.log(this.modelRegister);
   }
 
   pressKey(e) {
@@ -141,12 +228,6 @@ class KeyboardController {
     const textarea = document.querySelector('#textarea');
     textarea.focus();
 
-    // e.code.includes('Key') || e.code.includes('Digit') ? textarea.value += e.key : '';
-    // e.code.includes('Backquote') ? textarea.value += e.key : '';
-
-    // console.log(e);
-    // console.log(e.code);
-
     if (e.key === 'CapsLock') {
       this.changeRegister();
     }
@@ -156,15 +237,6 @@ class KeyboardController {
     }
 
     if (e.key === 'Tab') {
-      // textarea.value += '\t';
-      // textarea.setSelectionRange(2, 2);
-      // console.log(textarea.selectionStart);
-
-      // const startPos = textarea.selectionStart;
-      // let endPos = textarea.selectionEnd;
-      // textarea.value = textarea.value.substring(0, startPos) + '\t' +
-      // textarea.value.substring(endPos, textarea.value.length);
-
       insertAtCursor(textarea, '\t');
     }
   }
