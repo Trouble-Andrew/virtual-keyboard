@@ -113,7 +113,7 @@ class KeyboardController {
 
       switch (key.dataset.key) {
         case 'Tab':
-          insertAtCursor(textarea, '\t');
+          insertAtCursor(textarea, '    ');
           break;
         case 'CapsLock':
           this.changeRegister();
@@ -237,21 +237,11 @@ class KeyboardController {
     }
 
     if (e.key === 'Tab') {
-      insertAtCursor(textarea, '\t');
+      insertAtCursor(textarea, '    ');
     }
   }
 
   removeTransition(e) {
-    // console.log(e);
-
-    // if (e.location === 0) {
-    //   key = document.querySelector(`.key[data-key="${e.code}"]`);
-    // } else if (e.location === 1) {
-    //   key = document.querySelector(`.key[data-key="${e.code}"].left`);
-    // } else if (e.location === 2) {
-    //   key = document.querySelector(`.key[data-key="${e.code}"].right`);
-    // }
-
     const key = document.querySelector(`.key[data-key="${e.code}"]`);
     key.classList.remove('pressed');
     this.pressed = [];
