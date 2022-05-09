@@ -6,7 +6,6 @@ class KeyboardController {
     this.pressed = [];
   }
 
-  // EVENTLISTENER INTERFACE
   handleEvent(e) {
     e.stopPropagation();
     switch (e.type) {
@@ -40,7 +39,6 @@ class KeyboardController {
     return this.model.upperCase;
   }
 
-  // CHANGE THE MODEL
   clickHandler() {
     this.changeLanguage();
   }
@@ -48,8 +46,10 @@ class KeyboardController {
   changeLanguage() {
     if (this.model.language === 'en') {
       this.model.language = 'ru';
+      localStorage.setItem('language', 'ru');
     } else if (this.model.language === 'ru') {
       this.model.language = 'en';
+      localStorage.setItem('language', 'en');
     }
 
     this.model.notify(this.model);
@@ -90,9 +90,6 @@ class KeyboardController {
 
     if (key) {
       let char;
-      // console.log(this.modelRegister);
-      // console.log(key.dataset.key);
-      // console.log(this.model.chars[this.model.language][key.dataset.key]);
 
       if (key.dataset.key.includes('Key')) {
         if (this.modelRegister) {
@@ -228,8 +225,6 @@ class KeyboardController {
     }
 
     key.classList.add('pressed');
-
-    // console.log(e.code.includes('Key') || e.code.includes('Digit'));
 
     const textarea = document.querySelector('#textarea');
     textarea.focus();

@@ -3,7 +3,7 @@ import Observable from '../modules/observable';
 class KeyboardModel extends Observable {
   constructor() {
     super();
-    this.language = 'en';
+    this.language = localStorage.getItem('language') || 'en';
     this.upperCase = false;
 
     this.chars = {

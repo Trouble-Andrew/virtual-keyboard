@@ -27,7 +27,6 @@ class KeyboardView extends Observer {
   }
 
   render() {
-    // const container = document.querySelector('#app');
     const container = document.querySelector('body');
     const template = `<form action="#" id="form">
         <label for="textarea"></label>
