@@ -1,4 +1,4 @@
-import insertAtCursor from '../utils';
+import { insertAtCursor, removeElement } from '../utils';
 
 class KeyboardController {
   constructor(model) {
@@ -28,7 +28,7 @@ class KeyboardController {
         KeyboardController.keyup(e);
         break;
       default:
-        console.log(e.target);
+        break;
     }
   }
 
@@ -91,8 +91,8 @@ class KeyboardController {
     if (key) {
       let char;
       // console.log(this.modelRegister);
-      console.log(key.dataset.key);
-      console.log(this.model.chars[this.model.language][key.dataset.key]);
+      // console.log(key.dataset.key);
+      // console.log(this.model.chars[this.model.language][key.dataset.key]);
 
       if (key.dataset.key.includes('Key')) {
         if (this.modelRegister) {
@@ -151,6 +151,12 @@ class KeyboardController {
           break;
         case 'ArrowRight':
           insertAtCursor(textarea, '🠖');
+          break;
+        case 'Backspace':
+          removeElement(textarea, 'backspace');
+          break;
+        case 'Delete':
+          removeElement(textarea, 'delete');
           break;
         case 'BracketLeft':
           if (this.model.language === 'en') {

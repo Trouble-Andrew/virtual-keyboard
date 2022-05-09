@@ -18,9 +18,6 @@ class KeyboardView extends Observer {
     // eslint-disable-next-line no-restricted-syntax
     for (const [key, value] of Object.entries(chars)) {
       const currentKey = document.querySelector(`.key[data-key="${key}"]`);
-      console.log(key);
-      // console.log(value);
-      console.log(currentKey);
       if (this.controller.modelRegister) {
         currentKey.querySelector('.keycap').innerHTML = value.toUpperCase();
       } else {
@@ -353,7 +350,6 @@ class KeyboardView extends Observer {
     const newElement = document.createElement('div');
     newElement.id = 'app';
     newElement.innerHTML = template;
-    // container.innerHTML = template;
     container.insertAdjacentElement('afterbegin', newElement);
   }
 }
