@@ -300,3 +300,12 @@ body {
     transform: scale(0.98, 0.95);
   }
 }
+
+form {
+  margin-bottom: 30px;
+
+  input[type="reset"] {
+    margin: 0 auto;
+    display: block;
+  }
+}
