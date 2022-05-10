@@ -233,10 +233,6 @@ class KeyboardController {
       this.changeRegister();
     }
 
-    if (e.key === 'Shift') {
-      this.getUpperCase();
-    }
-
     if (e.key === 'Tab') {
       insertAtCursor(textarea, '    ');
     }
@@ -244,11 +240,9 @@ class KeyboardController {
 
   removeTransition(e) {
     const key = document.querySelector(`.key[data-key="${e.code}"]`);
-    key.classList.remove('pressed');
-    this.pressed = [];
-
-    if (e.key === 'Shift') {
-      this.getLowerCase();
+    if (key) {
+      key.classList.remove('pressed');
+      this.pressed = [];
     }
   }
 }

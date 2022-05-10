@@ -289,7 +289,7 @@ class KeyboardView extends Observer {
           <div class="function background">
             <div class="row">
               <div class="function__group">
-                <div class="key">
+                <div class="key" data-key="F13">
                   <div class="keycap">PrtSc<span class="side">Sys Rq</span></div>
                 </div>
                 <div class="key" data-key="145">
