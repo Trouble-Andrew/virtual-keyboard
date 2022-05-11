@@ -30,9 +30,9 @@ class KeyboardView extends Observer {
     const container = document.querySelector('body');
     const template = `<form action="#" id="form">
         <label for="textarea"></label>
-        <textarea id="textarea" name="textarea" rows="4" cols="50"></textarea>
+        <textarea id="textarea" name="textarea" class="form-95" rows="4" cols="50"></textarea>
         <br>
-        <input type="reset" value="Reset">
+        <input type="reset" value="Reset" class="btn">
       </form>
       <div class="keyboard">
         <div class="col col--main">

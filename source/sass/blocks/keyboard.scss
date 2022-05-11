@@ -123,8 +123,8 @@ body {
 }
 
 .key {
-  background: #d3cfcc;
-  border-color: #ece8e4 #dedad6 #c9c4c4;
+  background: #cfc7ba;
+  border-color: #cfc7ba;
 
   &--mid {
     width: 60px;
@@ -144,8 +144,8 @@ body {
 }
 
 .f_key {
-  background: #a8aeb8;
-  border-color: #c4c7cc #adb9cc #96a6bd;
+  background: #a49888;
+  border-color: #a49888;
 }
 
 .keycap {
@@ -156,8 +156,7 @@ body {
   padding: 5px 0 0 7px;
   font-size: 18px;
   line-height: 1;
-  background: #f5f3f1;
-  background: linear-gradient(left, #e5e2e1, #f5f3f1, #e5e2e1);
+  background: #dbd5c9;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
   border-radius: 4px;
   position: relative;
@@ -172,8 +171,7 @@ body {
   font-size: 15px;
   padding-left: 6px;
   padding-top: 0;
-  background: #bbc3d2;
-  background: linear-gradient(left, #bbc3d2, #cdd3de, #bbc3d2);
+  background: #b9aea0;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   border-radius: 4px;
   position: relative;
@@ -308,4 +306,15 @@ form {
     margin: 0 auto;
     display: block;
   }
+}
+
+.form-95 {
+  width: 100%;
+  border: 2px inset #d5d5d5;
+  color: #424242;
+  background: #fff;
+  box-shadow: -1px -1px 0 0 #828282;
+  margin-top: 4px;
+  padding-left:2px;
+  outline: 0 !important;
 }
